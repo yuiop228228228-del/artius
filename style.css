@@ -1,0 +1,830 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #25285c, #5b5b9b);
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+}
+
+.subtitle {
+    font-size: 14px;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 100px;
+    letter-spacing: 15px;
+    font-weight: 400;
+}
+
+.slogan {
+    font-size: 22px;
+    margin: 20px 0 35px;
+}
+
+/* Кнопка */
+.cta-button {
+    display: inline-block;
+    padding: 22px 45px;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, #8b5cf6, #c084fc);
+    border: none;
+    border-radius: 18px;
+    text-decoration: none;
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(168, 85, 247, 0.7),
+        0 0 35px rgba(168, 85, 247, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.2);
+
+    transition: all 0.3s ease;
+
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Наведение на кнопку */
+.cta-button:hover {
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 20px rgba(192, 132, 252, 0.9),
+        0 0 50px rgba(168, 85, 247, 0.8),
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Постоянное мягкое свечение */
+@keyframes glow {
+    0%, 100% {
+        box-shadow:
+            0 0 15px rgba(168, 85, 247, 0.7),
+            0 0 35px rgba(168, 85, 247, 0.5);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(192, 132, 252, 0.9),
+            0 0 60px rgba(168, 85, 247, 0.8);
+    }
+}
+
+/* Луна */
+.moon {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #eeeaff;
+
+    box-shadow:
+        0 0 30px #d8d2ff,
+        0 0 80px #aaa4ff,
+        0 0 140px #7774c9;
+
+    right: 12%;
+    top: 15%;
+
+    z-index: 1;
+}
+
+/* Тень на луне */
+.moon::after {
+    content: "";
+
+    position: absolute;
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #25285c,
+        #5b5b9b
+    );
+
+    left: -70px;
+    top: -20px;
+}
+.price-section {
+    min-height: 100vh;
+    padding: 100px 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: linear-gradient(135deg, #25285c, #5b5b9b);
+}
+
+.price-subtitle {
+    font-size: 14px;
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+}
+
+.price-section h2 {
+    font-size: 80px;
+    font-weight: 400;
+    margin: 0;
+
+    text-shadow:
+        0 0 20px rgba(216, 210, 255, 0.7),
+        0 0 50px rgba(170, 164, 255, 0.4);
+}
+
+.price-text {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.price-for {
+    font-size: 18px;
+    margin-top: 35px;
+    opacity: 0.85;
+}
+/* =========================================
+   СТРАНИЦА ЗАПИСИ
+========================================= */
+
+.signup-page {
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(120, 90, 255, 0.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 100, 180, 0.15),
+            transparent 35%
+        ),
+        #08080b;
+
+    color: white;
+}
+
+
+.signup-container {
+    width: 100%;
+    max-width: 620px;
+}
+
+
+/* КНОПКА НАЗАД */
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 50px;
+
+    color: #999;
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.back-button:hover {
+    color: white;
+}
+
+
+/* ЗАГОЛОВОК */
+
+.signup-subtitle {
+    color: #9d7cff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+
+.signup-container h1 {
+    font-size: clamp(45px, 7vw, 72px);
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 20px;
+}
+
+
+.signup-container h1 span {
+    color: #a17cff;
+}
+
+
+.signup-description {
+    color: #888;
+
+    font-size: 17px;
+
+    margin-bottom: 45px;
+}
+
+
+/* ФОРМА */
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+
+.form-group label {
+    color: #d5d5d5;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.form-group select,
+.form-group input {
+    width: 100%;
+
+    padding: 17px 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    outline: none;
+
+    background: rgba(255,255,255,0.055);
+
+    color: white;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+
+.form-group select:hover,
+.form-group input:hover {
+    border-color: rgba(255,255,255,0.2);
+}
+
+
+.form-group select:focus,
+.form-group input:focus {
+    border-color: #9d7cff;
+
+    background: rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 0 0 3px rgba(157,124,255,0.12);
+}
+
+
+/* SELECT */
+
+.form-group select option {
+    background: #17171c;
+    color: white;
+}
+
+
+/* DATE */
+
+.form-group input[type="date"] {
+    color-scheme: dark;
+}
+
+
+/* КНОПКА */
+
+.signup-submit {
+    margin-top: 10px;
+
+    width: 100%;
+
+    padding: 19px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.signup-submit:hover {
+    transform: translateY(-2px);
+
+    background: #eeeeee;
+
+    box-shadow:
+        0 10px 35px rgba(255,255,255,0.12);
+}
+
+
+.signup-submit:active {
+    transform: translateY(0);
+}
+
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media (max-width: 600px) {
+
+    .signup-page {
+        padding: 35px 18px;
+        align-items: flex-start;
+    }
+
+    .signup-container {
+        padding-top: 20px;
+    }
+
+    .back-button {
+        margin-bottom: 40px;
+    }
+
+    .signup-container h1 {
+        letter-spacing: -3px;
+    }
+
+    .signup-description {
+        margin-bottom: 35px;
+    }
+
+    .signup-form {
+        gap: 20px;
+    }
+
+}
+/* ================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ================================ */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+
+    /* ГЛАВНЫЙ ЭКРАН */
+
+    .hero {
+        min-height: 100svh;
+        padding: 25px 20px;
+    }
+
+
+    .hero-content {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 3px;
+        margin-bottom: 18px;
+    }
+
+
+    .hero h1 {
+        font-size: 52px;
+        letter-spacing: 8px;
+        line-height: 1;
+    }
+
+
+    .slogan {
+        font-size: 16px;
+        margin-top: 18px;
+    }
+
+
+    /* КНОПКА */
+
+    .cta-button {
+        width: 100%;
+        max-width: 340px;
+        padding: 18px 20px;
+        margin-top: 35px;
+
+        font-size: 14px;
+        border-radius: 16px;
+    }
+
+
+    /* ЦЕНА */
+
+    .price-section {
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+
+    .price-subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+
+    .price-section h2 {
+        font-size: 42px;
+        margin: 15px 0;
+    }
+
+
+    .price-text {
+        font-size: 15px;
+    }
+
+
+    .price-for {
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+
+    /* ЕСЛИ ЕСТЬ ЛУНА */
+
+    .moon {
+        transform: scale(0.7);
+        opacity: 0.8;
+    }
+
+}
+/* ========================================
+   МОБИЛЬНАЯ ВЕРСИЯ — SIGNUP
+   ======================================== */
+
+@media (max-width: 700px) {
+
+    .signup-page {
+        min-height: 100svh;
+        padding: 25px 16px 50px;
+    }
+
+
+    .signup-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* Кнопка назад */
+
+    .signup-back {
+        display: inline-block;
+        margin-bottom: 35px;
+
+        font-size: 14px;
+        padding: 10px 14px;
+
+        border-radius: 10px;
+    }
+
+
+    /* Верхний текст */
+
+    .signup-subtitle {
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 14px;
+    }
+
+
+    /* Заголовок */
+
+    .signup-page h1 {
+        font-size: 38px;
+        line-height: 1.05;
+        letter-spacing: -1.5px;
+        margin-bottom: 12px;
+    }
+
+
+    .signup-description {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+    }
+
+
+    /* ФОРМА */
+
+    .signup-form {
+        width: 100%;
+    }
+
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+
+    .form-group label {
+        display: block;
+
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+        width: 100%;
+
+        min-height: 52px;
+
+        padding: 14px 15px;
+
+        font-size: 16px;
+
+        border-radius: 13px;
+
+        box-sizing: border-box;
+    }
+
+
+    .form-group textarea {
+
+        min-height: 110px;
+
+        resize: vertical;
+
+    }
+
+
+    /* КНОПКА ОТПРАВКИ */
+
+    .signup-button {
+
+        width: 100%;
+
+        min-height: 54px;
+
+        padding: 15px 20px;
+
+        margin-top: 10px;
+
+        font-size: 15px;
+
+        border-radius: 14px;
+
+    }
+
+
+}
+/* =========================================
+   SIGNUP — МОБИЛЬНАЯ ВЕРСИЯ
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .signup-page {
+        min-height: 100svh;
+        padding: 25px 16px 50px;
+    }
+
+
+    .signup-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+
+    /* КНОПКА НАЗАД */
+
+    .back-button {
+        display: inline-block;
+        margin-bottom: 35px;
+
+        padding: 10px 14px;
+
+        font-size: 13px;
+
+        border-radius: 10px;
+    }
+
+
+    /* ARTIUS */
+
+    .signup-subtitle {
+        font-size: 10px;
+        letter-spacing: 2px;
+
+        margin-bottom: 15px;
+    }
+
+
+    /* ЗАГОЛОВОК */
+
+    .signup-page h1 {
+        font-size: 38px;
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .signup-page h1 span {
+        display: inline;
+    }
+
+
+    /* ОПИСАНИЕ */
+
+    .signup-description {
+        font-size: 14px;
+        line-height: 1.5;
+
+        margin-bottom: 32px;
+    }
+
+
+    /* ФОРМА */
+
+    .signup-form {
+        width: 100%;
+    }
+
+
+    .form-group {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+
+    /* НАЗВАНИЯ ПОЛЕЙ */
+
+    .form-group label {
+        display: block;
+
+        font-size: 13px;
+        line-height: 1.4;
+
+        margin-bottom: 8px;
+    }
+
+
+    /* ПОЛЯ */
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+        width: 100%;
+
+        min-height: 52px;
+
+        padding: 14px 15px;
+
+        font-size: 16px;
+
+        border-radius: 13px;
+
+        box-sizing: border-box;
+
+    }
+
+
+    /* SELECT */
+
+    .form-group select {
+        appearance: auto;
+    }
+
+
+    /* ТЕКСТОВОЕ ПОЛЕ */
+
+    .form-group textarea {
+
+        min-height: 110px;
+
+        line-height: 1.5;
+
+        resize: vertical;
+
+    }
+
+
+    /* КНОПКА ОТПРАВКИ */
+
+    .signup-submit {
+
+        width: 100%;
+
+        min-height: 56px;
+
+        padding: 16px 20px;
+
+        margin-top: 5px;
+
+        font-size: 15px;
+
+        border-radius: 14px;
+
+        cursor: pointer;
+
+    }
+
+
+}
+
+
+/* =========================================
+   ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .signup-page {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+
+    .signup-page h1 {
+        font-size: 34px;
+    }
+
+
+    .signup-subtitle {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+    }
+
+}

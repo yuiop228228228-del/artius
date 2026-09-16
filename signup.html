@@ -1,0 +1,398 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <title>Запись на бесплатный урок — ARTIUS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="signup-page">
+
+        <div class="signup-container">
+
+            <a href="index.html" class="back-button">
+                ← Вернуться назад
+            </a>
+
+            <p class="signup-subtitle">
+                ARTIUS · ЦЕНТР ТАЛАНТОВ
+            </p>
+
+            <h1>
+                Запишись на<br>
+                <span>бесплатный урок</span>
+            </h1>
+
+            <p class="signup-description">
+                Выбери направление, удобную дату и время.
+            </p>
+
+
+            <form class="signup-form">
+
+
+                <!-- НАПРАВЛЕНИЕ -->
+
+                <div class="form-group">
+
+                    <label for="direction">
+                        1. Выбери направление
+                    </label>
+
+                    <select id="direction" required>
+
+                        <option value="" disabled selected>
+                            Выберите направление
+                        </option>
+
+                        <option value="Вокал">
+                            🎤 Вокал
+                        </option>
+
+                        <option value="Гитара">
+                            🎸 Гитара
+                        </option>
+
+                        <option value="Фортепиано">
+                            🎹 Фортепиано
+                        </option>
+
+                        <option value="Домбыра">
+                            🪕 Домбыра
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ВОЗРАСТ -->
+
+                <div class="form-group">
+
+                    <label for="age">
+                        2. Кто будет заниматься?
+                    </label>
+
+                    <select id="age" required>
+
+                        <option value="" disabled selected>
+                            Выберите вариант
+                        </option>
+
+                        <option value="Ребёнок">
+                            Ребёнок
+                        </option>
+
+                        <option value="Подросток">
+                            Подросток
+                        </option>
+
+                        <option value="Взрослый">
+                            Взрослый
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ДАТА -->
+
+                <div class="form-group">
+
+                    <label for="date">
+                        3. Желаемая дата
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        required>
+
+                </div>
+
+
+                <!-- ВРЕМЯ -->
+
+                <div class="form-group">
+
+                    <label for="time">
+                        4. Когда вам удобно?
+                    </label>
+
+                    <select id="time" required>
+
+                        <option value="" disabled selected>
+                            Выберите удобное время
+                        </option>
+
+                        <option value="Утро · 09:00–12:00">
+                            🌅 Утро · 09:00–12:00
+                        </option>
+
+                        <option value="День · 12:00–17:00">
+                            ☀️ День · 12:00–17:00
+                        </option>
+
+                        <option value="Вечер · 17:00–21:00">
+                            🌙 Вечер · 17:00–21:00
+                        </option>
+
+                        <option value="Любое время">
+                            ✨ Мне подходит любое время
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ПОЖЕЛАНИЕ -->
+
+                <div class="form-group">
+
+                    <label for="comment">
+                        5. Есть пожелания?
+                    </label>
+
+                    <textarea
+                        id="comment"
+                        rows="4"
+                        placeholder="Например: могу только после 18:00"></textarea>
+
+                </div>
+
+
+                <!-- ИМЯ -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        6. Как вас зовут?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Введите имя"
+                        required>
+
+                </div>
+
+
+                <!-- WHATSAPP -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        7. Номер WhatsApp
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="+7 700 000 00 00"
+                        required>
+
+                </div>
+
+
+                <!-- КНОПКА -->
+
+                <button
+                    type="submit"
+                    class="signup-submit">
+
+                    Отправить заявку →
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+<script>
+
+    const SUPABASE_URL =
+        "https://udchymsnuxhwhnjcheuz.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_I1t8tO1sDu6nfaU6iF4rqg_d6jf0wpZ";
+
+
+    // ================================
+    // ЗАПРЕЩАЕМ ПРОШЕДШИЕ ДАТЫ
+    // ================================
+
+    const dateInput =
+        document.getElementById("date");
+
+    const today =
+        new Date();
+
+    const year =
+        today.getFullYear();
+
+    const month =
+        String(today.getMonth() + 1)
+            .padStart(2, "0");
+
+    const day =
+        String(today.getDate())
+            .padStart(2, "0");
+
+    dateInput.min =
+        `${year}-${month}-${day}`;
+
+
+    // ================================
+    // ФОРМА
+    // ================================
+
+    const form =
+        document.querySelector(".signup-form");
+
+
+    form.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const direction =
+                document.getElementById("direction").value;
+
+            const age =
+                document.getElementById("age").value;
+
+            const date =
+                document.getElementById("date").value;
+
+            const time =
+                document.getElementById("time").value;
+
+            const comment =
+                document.getElementById("comment").value;
+
+            const name =
+                document.getElementById("name").value;
+
+            const phone =
+                document.getElementById("phone").value;
+
+
+            // ================================
+            // ОТПРАВКА В SUPABASE
+            // ================================
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${SUPABASE_URL}/rest/v1/applications`,
+                        {
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                "apikey":
+                                    SUPABASE_KEY,
+
+                                "Authorization":
+                                    `Bearer ${SUPABASE_KEY}`,
+
+                                "Prefer":
+                                    "return=minimal"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                direction: direction,
+
+                                age: age,
+
+                                desired_date: date,
+
+                                desired_time: time,
+
+                                comment: comment,
+
+                                name: name,
+
+                                phone: phone,
+
+                                status: "Новая"
+
+                            })
+
+                        }
+                    );
+
+
+                // Проверяем результат
+
+                if (!response.ok) {
+
+                    const error =
+                        await response.text();
+
+                    console.error(error);
+
+                    alert(
+                        "Не удалось отправить заявку. " +
+                        "Попробуйте ещё раз."
+                    );
+
+                    return;
+
+                }
+
+
+                // Успешно
+
+                alert(
+                    "Заявка отправлена! " +
+                    "Айым свяжется с вами в WhatsApp " +
+                    "для подтверждения."
+                );
+
+
+                form.reset();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Ошибка соединения с сервером."
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
+```
